@@ -1,0 +1,67 @@
+# School Onboarding Scenario - Domain Configuration
+
+[meta]
+id = "school_onboarding"
+name = "新生入学办理助手"
+description = "面向新生的一站式入学办理服务，支持报到注册、宿舍入住、校园卡与统一身份账号激活、入学材料提交检查。适合用户一句话办理全部事项，也支持单项校园事务咨询。"
+version = "1.0.0"
+
+[routing]
+keywords = [
+    "入学",
+    "新生",
+    "报到",
+    "注册",
+    "开学",
+    "宿舍",
+    "入住",
+    "校园卡",
+    "一卡通",
+    "账号",
+    "统一身份认证",
+    "激活",
+    "材料",
+    "录取通知书",
+    "档案",
+    "党团关系",
+    "体检表",
+]
+
+[dimensions.registration]
+name = "报到注册"
+description = "办理新生身份核验、报到状态确认、缴费状态提示、学院专业信息确认和报到下一步指引。"
+required_fields = ["name", "student_id", "college_or_major"]
+optional_fields = ["student_type", "campus", "paid", "green_channel"]
+
+[dimensions.dormitory]
+name = "宿舍入住"
+description = "办理宿舍入住准备、楼栋/房间演示分配、到校时间安排、特殊住宿需求提示和入住材料说明。"
+required_fields = ["student_id", "campus", "gender"]
+optional_fields = ["name", "college_or_major", "arrival_datetime", "special_accommodation"]
+
+[dimensions.campus_account]
+name = "校园卡与账号激活"
+description = "办理统一身份认证账号、校园网、邮箱和校园卡领取/充值/挂失等激活指引。"
+required_fields = ["name", "student_id"]
+optional_fields = ["campus", "photo_uploaded", "paid", "student_type"]
+
+[dimensions.admission_materials]
+name = "入学材料提交"
+description = "检查身份证、录取通知书、照片、档案、党团关系、户口迁移、体检表等入学材料是否齐备，并生成补交清单。"
+required_fields = ["student_id", "student_type"]
+optional_fields = ["name", "college_or_major", "photo_uploaded", "paid", "green_channel"]
+
+[partners.static_mapping]
+registration = ["school_registration.json"]
+dormitory = ["dormitory_checkin.json"]
+campus_account = ["campus_account.json"]
+admission_materials = ["admission_materials.json"]
+
+[consistency]
+rules = [
+    "报到注册、宿舍入住、账号激活和材料提交应使用同一名学生的姓名与学号。",
+    "宿舍入住安排应与校区、性别和特殊住宿需求保持一致。",
+    "校园卡与账号激活的前置条件应与报到注册状态、缴费状态和照片上传状态保持一致。",
+    "入学材料清单应区分本科生、研究生、留学生等不同新生类型。",
+    "演示结果不得声称已写入真实学校系统，应明确标注为原型演示办理结果。",
+]

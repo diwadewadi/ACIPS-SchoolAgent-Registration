@@ -1,0 +1,38 @@
+{
+  "aic": "1.2.156.3088.0001.00001.SCHOOL.ACCOUNT.1.0001",
+  "active": true,
+  "protocolVersion": "02.00",
+  "name": "校园卡与账号激活智能体",
+  "description": "校园卡与账号激活智能体（Partner）。职责：在演示模式下生成统一身份认证账号、校园网、邮箱、校园卡领取/充值等激活指引。不接入真实账号或校园卡系统。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "School Agent Prototype",
+    "department": "Information Center",
+    "url": "http://localhost",
+    "license": "Demo"
+  },
+  "endPoints": [
+    {
+      "url": "http://localhost:59233/rpc",
+      "transport": "JSONRPC",
+      "security": []
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "campus_account.activate",
+      "name": "校园卡与账号激活",
+      "description": "根据姓名和学号生成演示账号激活流程、初始密码规则、校园卡领取/充值和常见异常处理建议。",
+      "version": "1.0.0",
+      "tags": ["统一身份认证", "校园卡", "校园网", "邮箱"],
+      "examples": ["帮我激活统一身份认证账号和校园卡"]
+    }
+  ]
+}

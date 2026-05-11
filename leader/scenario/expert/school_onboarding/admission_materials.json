@@ -1,0 +1,38 @@
+{
+  "aic": "1.2.156.3088.0001.00001.SCHOOL.MATERIALS.1.0001",
+  "active": true,
+  "protocolVersion": "02.00",
+  "name": "入学材料提交智能体",
+  "description": "入学材料提交智能体（Partner）。职责：在演示模式下检查新生入学材料清单，区分本科生/研究生/留学生常见材料，生成已提交、待补交和现场核验建议。不接入真实材料系统。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "School Agent Prototype",
+    "department": "Admissions Office",
+    "url": "http://localhost",
+    "license": "Demo"
+  },
+  "endPoints": [
+    {
+      "url": "http://localhost:59234/rpc",
+      "transport": "JSONRPC",
+      "security": []
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "admission_materials.review",
+      "name": "入学材料检查",
+      "description": "根据学号、新生类型和已知状态生成演示入学材料提交清单、缺失材料和补交流程。",
+      "version": "1.0.0",
+      "tags": ["入学材料", "录取通知书", "档案", "照片", "体检表"],
+      "examples": ["检查我的入学材料是否齐全"]
+    }
+  ]
+}

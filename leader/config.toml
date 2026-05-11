@@ -1,0 +1,60 @@
+[app]
+acs_json = "atr/acs.json"
+
+[logging]
+level = "INFO"
+
+[logging.packages]
+"assistant.core" = "DEBUG"
+"acps_sdk.aip" = "WARNING"
+
+[uvicorn]
+host = "0.0.0.0"
+port = 59210
+reload = false
+
+[mtls]
+cert_file = "atr/your-cert.pem"
+key_file = "atr/your-cert.key"
+ca_file = "atr/trust-bundle.pem"
+
+[llm.fast]
+api_type = "openai"
+api_key = "OPENAI_API_KEY"
+base_url = "https://www.dmxapi.com/v1/"
+model = "doubao-seed-1-6-flash-250828"
+
+[llm.default]
+api_type = "openai"
+api_key = "OPENAI_API_KEY"
+base_url = "https://www.dmxapi.com/v1/"
+model = "Doubao-pro-32k"
+
+[llm.pro]
+api_type = "openai"
+api_key = "OPENAI_API_KEY"
+base_url = "https://www.dmxapi.com/v1/"
+model = "qwen3-max"
+
+[discovery]
+server_base_url = ""
+timeout = 30
+limit = 5
+
+[group]
+enabled = false
+status_probe_interval = 30
+max_wait_seconds = 300
+partner_join_timeout = 60
+max_retry_count = 3
+
+[rabbitmq]
+host = "localhost"
+port = 5672
+user = "guest"
+password = "guest"
+vhost = "/"
+
+[rabbitmq.management]
+host = "localhost"
+port = 15672

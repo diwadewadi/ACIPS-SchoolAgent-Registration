@@ -1,0 +1,38 @@
+{
+  "aic": "1.2.156.3088.0001.00001.SCHOOL.DORMITORY.1.0001",
+  "active": true,
+  "protocolVersion": "02.00",
+  "name": "宿舍入住智能体",
+  "description": "宿舍入住智能体（Partner）。职责：在演示模式下根据校区、性别、到校时间和特殊住宿需求生成宿舍入住安排、领取钥匙流程和入住注意事项。不接入真实宿舍系统。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "School Agent Prototype",
+    "department": "Housing Office",
+    "url": "http://localhost",
+    "license": "Demo"
+  },
+  "endPoints": [
+    {
+      "url": "http://localhost:59232/rpc",
+      "transport": "JSONRPC",
+      "security": []
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "dormitory_checkin.arrange",
+      "name": "宿舍入住安排",
+      "description": "根据校区、性别和到校时间生成演示宿舍入住安排、楼栋房间示例、钥匙领取地点和入住准备清单。",
+      "version": "1.0.0",
+      "tags": ["宿舍", "入住", "校区", "到校时间"],
+      "examples": ["我是沙河校区男生，9月2日下午到校，帮我安排宿舍入住"]
+    }
+  ]
+}

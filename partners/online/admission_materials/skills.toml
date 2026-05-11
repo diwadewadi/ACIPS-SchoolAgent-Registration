@@ -1,0 +1,13 @@
+["admission_materials.review"]
+name = "入学材料检查"
+required_slots = ["student_id", "student_type"]
+optional_slots = ["name", "college_or_major", "photo_uploaded", "paid", "green_channel"]
+
+[slot_labels]
+name = "姓名"
+student_id = "学号"
+student_type = "新生类型"
+college_or_major = "学院/专业"
+photo_uploaded = "是否已上传照片"
+paid = "是否已缴费"
+green_channel = "是否需要绿色通道"

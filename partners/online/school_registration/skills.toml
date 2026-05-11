@@ -1,0 +1,13 @@
+["school_registration.checkin"]
+name = "报到注册办理"
+required_slots = ["name", "student_id", "college_or_major"]
+optional_slots = ["student_type", "campus", "paid", "green_channel"]
+
+[slot_labels]
+name = "姓名"
+student_id = "学号"
+college_or_major = "学院/专业"
+student_type = "新生类型"
+campus = "校区"
+paid = "是否已缴费"
+green_channel = "是否需要绿色通道"

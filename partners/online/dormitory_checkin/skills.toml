@@ -1,0 +1,13 @@
+["dormitory_checkin.arrange"]
+name = "宿舍入住安排"
+required_slots = ["student_id", "campus", "gender"]
+optional_slots = ["name", "college_or_major", "arrival_datetime", "special_accommodation"]
+
+[slot_labels]
+name = "姓名"
+student_id = "学号"
+college_or_major = "学院/专业"
+campus = "校区"
+gender = "性别"
+arrival_datetime = "到校日期和预计到校时间"
+special_accommodation = "特殊住宿需求"

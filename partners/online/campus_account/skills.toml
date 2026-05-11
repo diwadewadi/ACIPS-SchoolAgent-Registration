@@ -1,0 +1,12 @@
+["campus_account.activate"]
+name = "校园卡与账号激活"
+required_slots = ["name", "student_id"]
+optional_slots = ["campus", "photo_uploaded", "paid", "student_type"]
+
+[slot_labels]
+name = "姓名"
+student_id = "学号"
+campus = "校区"
+photo_uploaded = "是否已上传照片"
+paid = "是否已缴费"
+student_type = "新生类型"

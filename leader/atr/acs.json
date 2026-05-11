@@ -1,0 +1,32 @@
+{
+  "aic": "1.2.156.3088.0001.00001.SC64YN.Z5LSGY.1.0NMQ",
+  "active": true,
+  "protocolVersion": "02.00",
+  "lastModifiedTime": "2026-03-11T21:45:59.609051+08:00",
+  "name": "学校入学办理智能体",
+  "description": "学校入学办理智能体：作为 Leader Agent，负责理解新生入学相关请求，将报到注册、宿舍入住、校园卡与账号激活、入学材料提交等任务拆解给专业 Partner Agent，并整合各 Partner 的演示办理结果生成一站式入学办理回执。当前原型运行在演示模式，不接入真实学校系统。",
+  "version": "1.0.0",
+  "webAppUrl": "http://localhost:59200",
+  "provider": {
+    "organization": "北京邮电大学",
+    "department": "人工智能学院",
+    "url": "https://ai.bupt.edu.cn",
+    "license": "京ICP备14033833号-1"
+  },
+  "securitySchemes": {
+    "mtls": {
+      "type": "mutualTLS",
+      "description": "智能体间mTLS双向认证",
+      "x-caChallengeBaseUrl": "http://localhost:8004/acps-atr-v2"
+    }
+  },
+  "endPoints": [],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": [],
+  "defaultOutputModes": [],
+  "skills": []
+}

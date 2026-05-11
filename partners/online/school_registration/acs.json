@@ -1,0 +1,38 @@
+{
+  "aic": "1.2.156.3088.0001.00001.SCHOOL.REGISTRATION.1.0001",
+  "active": true,
+  "protocolVersion": "02.00",
+  "name": "报到注册智能体",
+  "description": "报到注册智能体（Partner）。职责：在演示模式下核验新生基础身份信息、生成报到注册状态、提示缴费/绿色通道/学院专业确认等报到事项。不接入真实学校系统。",
+  "version": "1.0.0",
+  "provider": {
+    "organization": "School Agent Prototype",
+    "department": "Student Affairs",
+    "url": "http://localhost",
+    "license": "Demo"
+  },
+  "endPoints": [
+    {
+      "url": "http://localhost:59231/rpc",
+      "transport": "JSONRPC",
+      "security": []
+    }
+  ],
+  "capabilities": {
+    "streaming": false,
+    "notification": false,
+    "messageQueue": []
+  },
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "school_registration.checkin",
+      "name": "报到注册办理",
+      "description": "根据姓名、学号、学院/专业等信息生成演示报到注册结果，并提示缴费、绿色通道和学院报到下一步。",
+      "version": "1.0.0",
+      "tags": ["报到", "注册", "身份核验", "缴费状态"],
+      "examples": ["我是计算机学院新生张三，学号2026123456，帮我完成报到注册"]
+    }
+  ]
+}
