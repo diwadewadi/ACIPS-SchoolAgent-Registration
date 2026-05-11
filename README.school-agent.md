@@ -50,3 +50,34 @@ http://localhost:59200
 ## 说明
 
 当前原型已经将原旅游 Partner 移到 `partners/offline/tour_demo_reference/`，并将旧 Leader 场景移到 `leader/scenario/offline_reference/`。运行时 `partners/online/` 只保留学校入学办理相关的 4 个 Partner，`leader/scenario/expert/` 只保留 `school_onboarding` 场景。
+
+## Windows 快速测试
+
+给同学 clone 后测试时，目录建议保持为：
+
+```text
+school-agent/
+├── ACPs-SDK/
+└── school-agent-prototype/
+```
+
+首次安装：
+
+```powershell
+cd school-agent-prototype
+.\scripts\install-windows.ps1
+```
+
+然后编辑 `.env`，填入自己的 `OPENAI_API_KEY`。`.env` 已被 `.gitignore` 忽略，不会提交到仓库。
+
+启动演示：
+
+```powershell
+.\scripts\start-windows.ps1
+```
+
+脚本会分别打开 Partner、Leader、Web 三个 PowerShell 窗口。浏览器访问：
+
+```text
+http://localhost:59200
+```

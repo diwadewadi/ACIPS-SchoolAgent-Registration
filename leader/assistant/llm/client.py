@@ -10,6 +10,7 @@ Leader Agent Platform - LLM Client
 
 import json
 import logging
+import os
 import re
 from typing import Any, Dict, Optional, Type, TypeVar
 
@@ -27,6 +28,12 @@ from ..models.exceptions import LLMCallError, LLMParseError
 logger = logging.getLogger(__name__)
 
 T = TypeVar("T", bound=BaseModel)
+
+
+def _resolve_env_reference(value: Optional[str]) -> Optional[str]:
+    if not value:
+        return value
+    return os.getenv(value, value)
 
 
 class LLMClient:
@@ -55,7 +62,14 @@ class LLMClient:
                 continue
 
             full_name = f"llm.{profile_name}"
-            self._profiles[full_name] = profile_data
+            resolved_profile = dict(profile_data)
+            resolved_profile["api_key"] = _resolve_env_reference(
+                profile_data.get("api_key", "")
+            )
+            resolved_profile["base_url"] = _resolve_env_reference(
+                profile_data.get("base_url")
+            )
+            self._profiles[full_name] = resolved_profile
 
             # llm.pro 用于 LLM-6 (Aggregation)，需要更长超时时间
             timeout = (
@@ -66,13 +80,13 @@ class LLMClient:
 
             # 创建 OpenAI 客户端
             self._clients[full_name] = OpenAI(
-                api_key=profile_data.get("api_key", ""),
-                base_url=profile_data.get("base_url"),
+                api_key=resolved_profile.get("api_key", ""),
+                base_url=resolved_profile.get("base_url"),
                 timeout=timeout,
             )
 
             logger.info(
-                f"Initialized LLM profile: {full_name} -> {profile_data.get('model')} (timeout={timeout}s)"
+                f"Initialized LLM profile: {full_name} -> {resolved_profile.get('model')} (timeout={timeout}s)"
             )
 
     def get_profile(self, profile_name: str) -> Dict[str, Any]:

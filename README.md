@@ -1,5 +1,7 @@
 # ACPs Demo Apps
 
+学校入学办理原型说明见 [README.school-agent.md](README.school-agent.md)。Windows 本地快速测试可使用 `scripts/install-windows.ps1` 和 `scripts/start-windows.ps1`。
+
 本项目是基于 ACPs 协议族的示例应用程序，通过北京旅游场景模拟，展示多 Agent 基于 AIP（智能体交互协议）进行协同工作的完整流程。
 
 ## 1. 架构概览

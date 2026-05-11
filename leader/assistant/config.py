@@ -5,6 +5,7 @@ import copy
 from pathlib import Path
 from typing import Dict, Any
 import tomllib as toml
+from dotenv import load_dotenv
 
 logger = logging.getLogger(__name__)
 
@@ -70,6 +71,9 @@ class ConfigManager:
         # We want project root to be leader/
         current_file = Path(__file__).resolve()
         project_root = current_file.parent.parent
+        repo_root = project_root.parent
+        load_dotenv(repo_root / ".env")
+        load_dotenv(project_root / ".env")
         config_path = project_root / "config.toml"
 
         if not config_path.exists():

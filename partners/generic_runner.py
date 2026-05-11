@@ -5,9 +5,11 @@ import asyncio
 import re
 import tomllib
 from datetime import datetime, timezone, timedelta
+from pathlib import Path
 from typing import Dict, Any, Optional, List, Union
 from dataclasses import dataclass, field
 from openai import AsyncOpenAI
+from dotenv import load_dotenv
 
 from acps_sdk.aip.aip_base_model import (
     TaskResult,
@@ -22,6 +24,8 @@ from acps_sdk.aip.aip_base_model import (
 )
 from acps_sdk.aip.aip_rpc_model import RpcRequest, RpcResponse, JSONRPCError
 from acps_sdk.aip.aip_rpc_server import CommandHandlers, DefaultHandlers
+
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # --- Logging Setup ---
 BEIJING_TZ = timezone(timedelta(hours=8))
